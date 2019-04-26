@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import SearchBar from './components/SearchBar';
+import PostContainer from './components/PostContainer';
+import dummyData from './dummy-data';
+
+class App extends Component {
+  state = {
+    posts: []
+  }
+
+  componentDidMount() {
+    // Fetch posts data from the API
+    this.setState({ posts: dummyData });
+  }
+
+  render() {
+    return (
+      <>
+        <header>
+          <SearchBar />
+        </header>
+        <main>
+          <PostContainer />
+        </main>
+        <footer className="footer">This is just for purpose of training, made by <span className="footer__user-name">ashatat</span></footer>
+      </>
+    );
+  }
 }
 
 export default App;
